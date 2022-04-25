@@ -1,3 +1,4 @@
 walkthrough_env
 __pycache__
 inventory_env
+.env
