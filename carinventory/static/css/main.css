@@ -1,0 +1,96 @@
+/*Nav Styles */
+.navbar{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between; 
+}
+
+.navbar img{
+    width: 25%;
+    max-width: 50%;
+    margin-left: 2vw;
+}
+
+ul#horizontal-list{
+    min-width: 696px;
+    padding-top: 20px;
+}
+
+ul#horizontal-list li, ul#horizontal-list a{
+    display:inline;
+    text-decoration:none;
+    padding: 0.5vw;
+    color:black;
+}
+
+ul#horizontal-list a:nth-last-child(1){
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 11px;
+    margin-right: 0.2vw;
+}
+
+/* Start Header Section */
+#header-text{
+    padding: 2vw;
+}
+
+.header-image{
+    width: 82%;
+    max-width: 100%;
+}
+
+/* Start Features*/
+#api-image,#graphql-image,#database-image{
+    margin-bottom: 10vh;
+}
+
+#features-section{
+    margin: 8vw;
+}
+
+
+#Drone-image{
+    width: 50%;
+    max-width: 75%;
+    margin-left: 3vw;
+}
+
+/* Footer */
+.footer-text-flex{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vw;
+}
+
+#footer-logo{
+    width:100%;
+    max-width:100%;
+}
+
+#footer{
+    border-top: 3px solid black;
+    margin-top: 20vh;
+}
+
+
+/* Profile */
+.hero-section{
+    height: 95vh;
+    background-image:linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 0, 0, 0.6)), url(../images/drone-profile.jpg);
+    background-size: cover;
+    background-position: center;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    clip-path:polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    position: relative;
+}
+
+.header-text{
+    display:flex;
+    justify-content: center;
+    padding-top: 20%;
+    left: 20rem;
+    top: 10rem;
+    color: white;
+}
