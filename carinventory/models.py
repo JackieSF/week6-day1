@@ -9,10 +9,21 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # Import for Secrets Module (Given by Python)
 import secrets
 
+from flask_login import UserMixin
+
+from flask_login import LoginManager
+
+from flask_marshmallow import Marshmallow
+
 db = SQLAlchemy()
+login_manager = LoginManager()
+ma = Marshmallow()
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key = True)
     first_name = db.Column(db.String(150), nullable = True, default='')
     last_name = db.Column(db.String(150), nullable = True, default = '')
@@ -43,3 +54,36 @@ class User(db.Model):
 
     def __repr__(self):
         return f'User {self.email} was put in database'
+
+class Car(db.Model):
+    id = db.Column(db.String, primary_key = True)
+    doors = db.Column(db.String(150))
+    seats = db.Column(db.String(150))
+    model = db.Column(db.String(150), nullable = False)
+    year = db.Column(db.String(150))
+    color = db.Column(db.String(150))
+    price = db.Column(db.String(150))
+    user_token = db.Column(db.String, db.ForeignKey("user.token"), nullable=False)
+
+    def __init__(self,doors,seats,model,year,color,price,user_token, id=""):
+        self.doors = doors
+        self.seats = seats
+        self.model = model
+        self.year = year
+        self.color = color
+        self.price = price
+        self.user_token = user_token
+        self.id = self.set_id()
+
+    def __repr__(self):
+        return f"your car: {self.year} {self.color} {self.model} has been added!"
+    
+    def set_id(self):
+        return (secrets.token_urlsafe())
+
+class CarSchema(ma.Schema):
+    class Meta:
+        fields = ["id", "doors", "seats", "model", "year", "color", "price"]
+
+car_schema = CarSchema()
+cars_schema = CarSchema(many=True)

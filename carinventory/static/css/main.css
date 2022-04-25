@@ -1,7 +1,6 @@
 /*Nav Styles */
 .navbar{
     display:flex;
-    flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     align-content: space-between; 
@@ -9,11 +8,12 @@
 
 .navbar img{
     width: 25%;
-    max-width: 50%;
+    max-width: 100%;
     margin-left: 2vw;
 }
 
 ul#horizontal-list{
+    min-width: 696px;
     padding-top: 20px;
 }
 
@@ -38,11 +38,6 @@ ul#horizontal-list a:nth-last-child(1){
 .header-image{
     width: 82%;
     max-width: 100%;
-}
-
-/* Start Features*/
-#api-image,#graphql-image,#database-image{
-    margin-bottom: 10vh;
 }
 
 #features-section{

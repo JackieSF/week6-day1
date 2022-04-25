@@ -10,6 +10,12 @@ from flask_migrate import Migrate
 
 from .models import db as root_db
 
+from flask_marshmallow import Marshmallow
+
+from flask_cors import CORS
+
+from drone_inventory.helpers import JSONEncoder
+
 app = Flask(__name__)
 
 
@@ -24,5 +30,13 @@ root_db.init_app(app)
 
 migrate = Migrate(root_db)
 
+login_manager.init_app(app)
+login_manager.login_view = 'signin
 
-import carinventory.models as models
+ma.init_app(app)
+
+app.json_encoder = JSONEncoder
+
+CORS(app)
+
+from carinventory import models
